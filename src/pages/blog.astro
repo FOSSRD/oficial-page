@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import Icons from '../components/Icons.astro';
-import { BLOG_PREVIEWS, COMMUNITY } from '../data/community';
+import { BLOG_PREVIEWS, COMMUNITY, withBase } from '../data/community';
 ---
 
 <BaseLayout
@@ -90,7 +90,7 @@ import { BLOG_PREVIEWS, COMMUNITY } from '../data/community';
             <span>Proponer en Telegram</span>
           </a>
           <a
-            href="/"
+            href={withBase('/')}
             class="inline-flex items-center gap-2 rounded-xl border border-white/10 px-4 py-2.5 text-sm font-medium text-slate-200 transition hover:bg-white/[0.06]"
           >
             ← Volver al inicio

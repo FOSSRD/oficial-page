@@ -1,6 +1,6 @@
 ---
 import Icons from './Icons.astro';
-import { COMMUNITY } from '../data/community';
+import { COMMUNITY, withBase } from '../data/community';
 ---
 
 <section class="py-12 sm:py-16">
@@ -14,7 +14,7 @@ import { COMMUNITY } from '../data/community';
 
       <div class="relative z-10 mx-auto max-w-2xl">
         <img
-          src="/img/fossrd-logo.png"
+          src={withBase('/img/fossrd-logo.png')}
           alt="FOSS-RD"
           class="mx-auto mb-5 h-14 w-14 object-contain drop-shadow-lg"
         />
@@ -56,7 +56,7 @@ import { COMMUNITY } from '../data/community';
 <footer class="mt-auto border-t border-white/10 bg-[#04070F]">
   <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-6">
     <div class="flex items-center gap-3">
-      <img src="/img/fossrd-logo.png" alt="FOSS-RD" class="h-8 w-8 object-contain" />
+      <img src={withBase('/img/fossrd-logo.png')} alt="FOSS-RD" class="h-8 w-8 object-contain" />
       <div>
         <div class="font-display text-sm font-bold text-white">
           FOSS-RD · Free Open Source Software RD
@@ -76,7 +76,7 @@ import { COMMUNITY } from '../data/community';
         <Icons name="github" class="h-4 w-4" />
         <span>GitHub</span>
       </a>
-      <a href="/blog" class="transition hover:text-white">Blog</a>
+      <a href={withBase('/blog')} class="transition hover:text-white">Blog</a>
       <a href={COMMUNITY.rulesUrl} target="_blank" rel="noopener noreferrer" class="transition hover:text-white">Reglas</a>
     </div>
   </div>

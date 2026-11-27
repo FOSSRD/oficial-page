@@ -1,6 +1,6 @@
 ---
 import Icons from './Icons.astro';
-import { BLOG_PREVIEWS } from '../data/community';
+import { BLOG_PREVIEWS, withBase } from '../data/community';
 ---
 
 <section id="blog" class="py-16 sm:py-20">
@@ -19,7 +19,7 @@ import { BLOG_PREVIEWS } from '../data/community';
       </div>
 
       <a
-        href="/blog"
+        href={withBase('/blog')}
         class="inline-flex items-center gap-2 self-start rounded-xl border border-white/15 bg-white/[0.04] px-4 py-2.5 text-sm font-semibold text-white transition hover:border-[#38BDF8]/50 hover:bg-white/[0.08]"
       >
         <Icons name="book" class="h-4 w-4 text-[#38BDF8]" />
@@ -51,7 +51,7 @@ import { BLOG_PREVIEWS } from '../data/community';
           <div class="mt-6 flex items-center justify-between border-t border-white/10 pt-4 text-xs">
             <span class="font-mono text-slate-400">{post.status}</span>
             <a
-              href="/blog"
+              href={withBase('/blog')}
               class="font-semibold text-[#38BDF8] transition hover:text-white"
             >
               Ver en /blog →

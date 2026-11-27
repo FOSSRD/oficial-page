@@ -1,6 +1,6 @@
 ---
 import Icons from './Icons.astro';
-import { COMMUNITY } from '../data/community';
+import { COMMUNITY, withBase } from '../data/community';
 
 interface Props {
   activePath?: '/' | '/blog';
@@ -12,10 +12,10 @@ const { activePath = '/' } = Astro.props;
 <header class="sticky top-0 z-50 border-b border-white/10 bg-[#050811]/80 backdrop-blur-xl">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6">
     <!-- Brand -->
-    <a href="/" class="group flex items-center gap-3">
+    <a href={withBase('/')} class="group flex items-center gap-3">
       <div class="relative flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.04] p-1.5 ring-1 ring-white/10 transition group-hover:ring-[#CE1126]/60">
         <img
-          src="/img/fossrd-logo.png"
+          src={withBase('/img/fossrd-logo.png')}
           alt="Logo de FOSS-RD"
           class="h-full w-full object-contain drop-shadow"
         />
@@ -32,12 +32,12 @@ const { activePath = '/' } = Astro.props;
 
     <!-- Desktop Navigation -->
     <nav class="hidden items-center gap-7 text-sm font-medium text-slate-300 md:flex">
-      <a href="/#comunidad" class="transition hover:text-white">Comunidad</a>
-      <a href="/#pilares" class="transition hover:text-white">Qué hacemos</a>
-      <a href="/#proyectos" class="transition hover:text-white">Repositorios</a>
-      <a href="/#reglas" class="transition hover:text-white">Reglas</a>
+      <a href={withBase('/#comunidad')} class="transition hover:text-white">Comunidad</a>
+      <a href={withBase('/#pilares')} class="transition hover:text-white">Qué hacemos</a>
+      <a href={withBase('/#proyectos')} class="transition hover:text-white">Repositorios</a>
+      <a href={withBase('/#reglas')} class="transition hover:text-white">Reglas</a>
       <a
-        href="/blog"
+        href={withBase('/blog')}
         class:list={[
           'transition hover:text-white',
           activePath === '/blog' ? 'text-[#38BDF8] font-semibold' : '',
