@@ -1,0 +1,83 @@
+---
+import Icons from './Icons.astro';
+import { COMMUNITY } from '../data/community';
+---
+
+<section class="py-12 sm:py-16">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <!-- Final High-Conversion CTA Banner -->
+    <div class="relative overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-r from-[#002D62]/90 via-[#0B1633] to-[#4A0B18]/80 px-6 py-12 text-center shadow-2xl sm:px-12 sm:py-16">
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_center,rgba(56,189,248,0.16),transparent_60%)]"
+      ></div>
+
+      <div class="relative z-10 mx-auto max-w-2xl">
+        <img
+          src="/img/fossrd-logo.png"
+          alt="FOSS-RD"
+          class="mx-auto mb-5 h-14 w-14 object-contain drop-shadow-lg"
+        />
+
+        <h2 class="font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+          ¿Trabajas en tech o estás aprendiendo Open Source en RD?
+        </h2>
+
+        <p class="mt-4 text-base text-slate-200 sm:text-lg">
+          Entra al grupo de Telegram, preséntate y comparte con una comunidad abierta dispuesta a sumar.
+        </p>
+
+        <div class="mt-8 flex flex-col justify-center gap-3.5 sm:flex-row">
+          <a
+            href={COMMUNITY.telegramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2.5 rounded-2xl bg-[#229ED9] px-8 py-4 text-base font-bold text-white shadow-[0_12px_36px_-8px_rgba(34,158,217,0.85)] transition hover:-translate-y-0.5 hover:bg-[#1b8cc2]"
+          >
+            <Icons name="telegram" class="h-5 w-5" />
+            <span>Unirme al grupo en Telegram</span>
+          </a>
+
+          <a
+            href={COMMUNITY.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2.5 rounded-2xl border border-white/20 bg-black/30 px-7 py-4 text-base font-semibold text-white transition hover:bg-black/50"
+          >
+            <Icons name="github" class="h-5 w-5" />
+            <span>Explorar GitHub</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="mt-auto border-t border-white/10 bg-[#04070F]">
+  <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+    <div class="flex items-center gap-3">
+      <img src="/img/fossrd-logo.png" alt="FOSS-RD" class="h-8 w-8 object-contain" />
+      <div>
+        <div class="font-display text-sm font-bold text-white">
+          FOSS-RD · Free Open Source Software RD
+        </div>
+        <div class="text-xs text-slate-400">
+          República Dominicana · Contacto: <a href={`mailto:${COMMUNITY.email}`} class="text-slate-300 underline decoration-white/20 hover:text-white">{COMMUNITY.email}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-5 text-sm text-slate-400">
+      <a href={COMMUNITY.telegramUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 transition hover:text-[#38BDF8]">
+        <Icons name="telegram" class="h-4 w-4" />
+        <span>Telegram</span>
+      </a>
+      <a href={COMMUNITY.githubUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 transition hover:text-white">
+        <Icons name="github" class="h-4 w-4" />
+        <span>GitHub</span>
+      </a>
+      <a href="/blog" class="transition hover:text-white">Blog</a>
+      <a href={COMMUNITY.rulesUrl} target="_blank" rel="noopener noreferrer" class="transition hover:text-white">Reglas</a>
+    </div>
+  </div>
+</footer>

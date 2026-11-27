@@ -1,0 +1,135 @@
+---
+import Icons from './Icons.astro';
+import { COMMUNITY, REPOSITORIES } from '../data/community';
+---
+
+<section id="proyectos" class="py-16 sm:py-20">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <span class="font-mono text-xs font-semibold uppercase tracking-widest text-[#ff6b7d]">
+          // github.com/FOSSRD
+        </span>
+        <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          Repositorios y recursos abiertos
+        </h2>
+        <p class="mt-2 max-w-xl text-base text-slate-400">
+          Recursos, configuraciones de sistemas y proyectos abiertos creados por miembros de la comunidad.
+        </p>
+      </div>
+
+      <!-- Category Filters -->
+      <div class="inline-flex rounded-xl border border-white/10 bg-[#0A1122] p-1 self-start" role="group" aria-label="Filtrar repositorios">
+        <button
+          type="button"
+          data-repo-filter="all"
+          class="repo-filter-btn rounded-lg bg-[#002D62] px-3.5 py-2 font-mono text-xs font-semibold text-white transition"
+        >
+          Todos ({REPOSITORIES.length})
+        </button>
+        <button
+          type="button"
+          data-repo-filter="systems"
+          class="repo-filter-btn rounded-lg px-3.5 py-2 font-mono text-xs font-medium text-slate-400 transition hover:text-white"
+        >
+          Sistemas &amp; Configs
+        </button>
+        <button
+          type="button"
+          data-repo-filter="software"
+          class="repo-filter-btn rounded-lg px-3.5 py-2 font-mono text-xs font-medium text-slate-400 transition hover:text-white"
+        >
+          Proyectos &amp; Código
+        </button>
+      </div>
+    </div>
+
+    <!-- Repo Grid -->
+    <div id="repo-grid" class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {REPOSITORIES.map((repo) => {
+        const isProject = repo.category === 'software';
+        return (
+          <a
+            href={repo.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-repo-category={repo.category}
+            class="repo-card card-glass group flex flex-col justify-between rounded-2xl p-5 transition duration-200 hover:-translate-y-0.5"
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <span
+                  class:list={[
+                    'inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 font-mono text-[11px] font-medium ring-1',
+                    isProject
+                      ? 'bg-[#CE1126]/15 text-[#ff6b7d] ring-[#CE1126]/30'
+                      : 'bg-[#002D62]/60 text-[#7dd3fc] ring-[#38BDF8]/25',
+                  ]}
+                >
+                  {repo.language}
+                </span>
+
+                {repo.stars > 0 && (
+                  <span class="inline-flex items-center gap-1 font-mono text-xs text-amber-300/90">
+                    <Icons name="star" class="h-3.5 w-3.5" />
+                    {repo.stars}
+                  </span>
+                )}
+              </div>
+
+              <h3 class="mt-4 flex items-center gap-2 font-display text-lg font-bold text-white group-hover:text-[#38BDF8] transition-colors">
+                <span>{repo.name}</span>
+                <Icons name="external" class="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
+              </h3>
+
+              <p class="mt-2 text-sm leading-relaxed text-slate-300">
+                {repo.description}
+              </p>
+            </div>
+
+            <div class="mt-5 flex items-center justify-between border-t border-white/10 pt-3.5 font-mono text-xs text-slate-400">
+              <span>FOSSRD/{repo.name}</span>
+              <span class="text-slate-300 group-hover:text-white transition">Ver repo →</span>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+
+    <div class="mt-8 text-center">
+      <a
+        href={COMMUNITY.githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/[0.03] px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-white/30 hover:bg-white/[0.07] hover:text-white"
+      >
+        <Icons name="github" class="h-4 w-4" />
+        <span>Ver toda la organización en GitHub</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const filterButtons = document.querySelectorAll<HTMLButtonElement>('[data-repo-filter]');
+  const repoCards = document.querySelectorAll<HTMLElement>('.repo-card');
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.repoFilter;
+
+      filterButtons.forEach((b) => {
+        const active = b.dataset.repoFilter === filter;
+        b.classList.toggle('bg-[#002D62]', active);
+        b.classList.toggle('text-white', active);
+        b.classList.toggle('font-semibold', active);
+        b.classList.toggle('text-slate-400', !active);
+      });
+
+      repoCards.forEach((card) => {
+        const show = filter === 'all' || card.dataset.repoCategory === filter;
+        card.classList.toggle('hidden', !show);
+      });
+    });
+  });
+</script>

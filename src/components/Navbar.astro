@@ -1,0 +1,74 @@
+---
+import Icons from './Icons.astro';
+import { COMMUNITY } from '../data/community';
+
+interface Props {
+  activePath?: '/' | '/blog';
+}
+
+const { activePath = '/' } = Astro.props;
+---
+
+<header class="sticky top-0 z-50 border-b border-white/10 bg-[#050811]/80 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6">
+    <!-- Brand -->
+    <a href="/" class="group flex items-center gap-3">
+      <div class="relative flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.04] p-1.5 ring-1 ring-white/10 transition group-hover:ring-[#CE1126]/60">
+        <img
+          src="/img/fossrd-logo.png"
+          alt="Logo de FOSS-RD"
+          class="h-full w-full object-contain drop-shadow"
+        />
+      </div>
+      <div class="flex flex-col">
+        <span class="font-display text-lg font-bold tracking-tight text-white">
+          FOSS<span class="text-[#CE1126]">-</span><span class="text-[#38BDF8]">RD</span>
+        </span>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-slate-400">
+          Open Source · RD
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden items-center gap-7 text-sm font-medium text-slate-300 md:flex">
+      <a href="/#comunidad" class="transition hover:text-white">Comunidad</a>
+      <a href="/#pilares" class="transition hover:text-white">Qué hacemos</a>
+      <a href="/#proyectos" class="transition hover:text-white">Repositorios</a>
+      <a href="/#reglas" class="transition hover:text-white">Reglas</a>
+      <a
+        href="/blog"
+        class:list={[
+          'transition hover:text-white',
+          activePath === '/blog' ? 'text-[#38BDF8] font-semibold' : '',
+        ]}
+      >
+        Blog
+      </a>
+    </nav>
+
+    <!-- Actions -->
+    <div class="flex items-center gap-2.5">
+      <a
+        href={COMMUNITY.githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Organización FOSSRD en GitHub"
+        class="hidden sm:inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2 text-sm font-medium text-slate-200 transition hover:border-white/25 hover:bg-white/[0.08] hover:text-white"
+      >
+        <Icons name="github" class="h-4 w-4" />
+        <span>GitHub</span>
+      </a>
+
+      <a
+        href={COMMUNITY.telegramUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-xl bg-[#229ED9] px-4 py-2 text-sm font-semibold text-white shadow-[0_0_25px_-5px_rgba(34,158,217,0.7)] transition hover:bg-[#1b8cc2] hover:shadow-[0_0_30px_-3px_rgba(34,158,217,0.9)]"
+      >
+        <Icons name="telegram" class="h-4 w-4" />
+        <span>Unirse al Telegram</span>
+      </a>
+    </div>
+  </div>
+</header>

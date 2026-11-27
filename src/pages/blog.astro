@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Icons from '../components/Icons.astro';
+import { BLOG_PREVIEWS, COMMUNITY } from '../data/community';
+---
+
+<BaseLayout
+  title="Blog — FOSS-RD | Open Source y Tecnología"
+  description="Pre-diseño de la sección /blog de FOSS-RD para presentar artículos sobre Open Source, Linux, sistemas operativos y tecnología."
+>
+  <Navbar activePath="/blog" />
+
+  <main class="flex-1 py-14 sm:py-20">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6">
+      <!-- Header -->
+      <div class="flex flex-col gap-4 border-b border-white/10 pb-8">
+        <div class="inline-flex w-fit items-center gap-2 rounded-full border border-[#38BDF8]/30 bg-[#002D62]/50 px-3.5 py-1 font-mono text-xs text-[#7dd3fc]">
+          <Icons name="book" class="h-3.5 w-3.5" />
+          <span>Pre-diseño de /blog</span>
+        </div>
+
+        <h1 class="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+          Blog de <span class="text-gradient-foss">FOSS-RD</span>
+        </h1>
+
+        <p class="max-w-2xl text-base leading-relaxed text-slate-300">
+          Artículos técnicos, guías de sistemas operativos y lecturas compartidas por la comunidad sobre Open Source y tecnología en general.
+        </p>
+
+        <!-- Assembly Note -->
+        <div class="mt-2 rounded-2xl border border-amber-400/25 bg-amber-400/[0.06] px-4 py-3.5 text-sm text-amber-100/90">
+          <strong class="font-semibold text-amber-300">Nota de pre-diseño:</strong> Esta ruta <code class="font-mono text-white">/blog</code> está preparada para recibir los artículos publicados actualmente en <code class="font-mono text-white">fossrd.github.io</code> cuando la comunidad apruebe la migración.
+        </div>
+      </div>
+
+      <!-- Existing Blog Items Showcase -->
+      <div class="mt-10 grid gap-6">
+        {BLOG_PREVIEWS.map((post, idx) => (
+          <article class="card-glass rounded-3xl p-7 sm:p-8 transition hover:border-[#38BDF8]/35">
+            <div class="flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
+              <div class="flex items-center gap-2.5">
+                <span class="rounded-md bg-[#002D62]/80 px-2.5 py-1 text-[#7dd3fc] ring-1 ring-[#38BDF8]/30">
+                  {post.tag}
+                </span>
+                <span class="text-slate-400">#{String(idx + 1).padStart(2, '0')}</span>
+              </div>
+              <span class="text-slate-400">{post.status}</span>
+            </div>
+
+            <h2 class="mt-4 font-display text-2xl font-bold text-white sm:text-3xl">
+              {post.title}
+            </h2>
+
+            <p class="mt-3 text-base leading-relaxed text-slate-300">
+              {post.excerpt}
+            </p>
+
+            <div class="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-5">
+              <span class="font-mono text-xs text-slate-400">Slug previsto: /blog/{post.slug}</span>
+              <a
+                href={post.externalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 rounded-xl bg-white/[0.06] px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/10 transition hover:bg-white/[0.12]"
+              >
+                <span>Ver versión actual en fossrd.com</span>
+                <Icons name="external" class="h-4 w-4 text-[#38BDF8]" />
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Contribute article CTA -->
+      <div class="mt-12 flex flex-col items-start justify-between gap-5 rounded-2xl border border-white/10 bg-[#0A1122] p-6 sm:flex-row sm:items-center">
+        <div>
+          <h3 class="font-display text-lg font-bold text-white">¿Quieres proponer un tema o artículo?</h3>
+          <p class="mt-1 text-sm text-slate-400">Compártelo directamente en nuestro grupo de Telegram o abre un PR en GitHub.</p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href={COMMUNITY.telegramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-xl bg-[#229ED9] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#1b8cc2]"
+          >
+            <Icons name="telegram" class="h-4 w-4" />
+            <span>Proponer en Telegram</span>
+          </a>
+          <a
+            href="/"
+            class="inline-flex items-center gap-2 rounded-xl border border-white/10 px-4 py-2.5 text-sm font-medium text-slate-200 transition hover:bg-white/[0.06]"
+          >
+            ← Volver al inicio
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

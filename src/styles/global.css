@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@import "@fontsource-variable/space-grotesk";
+@import "@fontsource-variable/plus-jakarta-sans";
+@import "@fontsource-variable/jetbrains-mono";
+
+@theme {
+  --font-display: "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
+
+  /* Official FOSS-RD Logo Palette */
+  --color-foss-navy: #002D62;
+  --color-foss-red: #CE1126;
+  --color-foss-white: #FFFFFF;
+
+  /* Accessible Dark UI Companions */
+  --color-foss-bg: #050811;
+  --color-foss-surface: #0A1122;
+  --color-foss-card: #0E172D;
+  --color-foss-blue: #2563EB;
+  --color-foss-sky: #38BDF8;
+  --color-foss-crimson: #E11D48;
+  --color-telegram: #229ED9;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #050811;
+    color: #F8FAFC;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+
+  ::selection {
+    background-color: rgba(206, 17, 38, 0.35);
+    color: #FFFFFF;
+  }
+}
+
+.bg-tech-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.card-glass {
+  background: linear-gradient(180deg, rgba(14, 23, 45, 0.88) 0%, rgba(8, 13, 27, 0.92) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 50px -24px rgba(0, 0, 0, 0.85);
+}
+
+.card-glass:hover {
+  border-color: rgba(56, 189, 248, 0.28);
+}
+
+.text-gradient-foss {
+  background: linear-gradient(120deg, #FFFFFF 0%, #93C5FD 50%, #F43F5E 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

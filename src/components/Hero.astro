@@ -1,0 +1,243 @@
+---
+import Icons from './Icons.astro';
+import { COMMUNITY } from '../data/community';
+---
+
+<section class="relative overflow-hidden pt-12 pb-20 sm:pt-18 sm:pb-24">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
+      <!-- Left: Copy & Primary CTAs -->
+      <div class="lg:col-span-7">
+        <!-- Community Status Pill -->
+        <div class="mb-6 inline-flex flex-wrap items-center gap-2.5 rounded-full border border-white/10 bg-[#0B1224]/90 px-3.5 py-1.5 text-xs font-medium text-slate-300 shadow-lg">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+          </span>
+          <span>Grupo activo en Telegram</span>
+          <span class="text-slate-600">•</span>
+          <span class="font-mono text-[#38BDF8]">{COMMUNITY.telegramMembers} miembros</span>
+          <span class="rounded-full bg-[#CE1126]/20 px-2 py-0.5 font-mono text-[11px] font-semibold text-[#ff6b7d] ring-1 ring-[#CE1126]/40">
+            República Dominicana
+          </span>
+        </div>
+
+        <h1 class="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-[3.55rem] lg:leading-[1.06]">
+          El punto de encuentro <br class="hidden sm:inline" />
+          <span class="text-gradient-foss">Open Source &amp; Tech</span>
+          <br class="hidden sm:inline" />
+          en República Dominicana.
+        </h1>
+
+        <p class="mt-6 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+          Profesionales y entusiastas de la computación reunidos en Telegram para hablar de <strong class="font-semibold text-white">Open Source, Linux y otros sistemas operativos</strong>, tecnología en general y crecer juntos como comunidad.
+        </p>
+
+        <!-- Primary & Secondary CTAs -->
+        <div class="mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
+          <a
+            href={COMMUNITY.telegramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center justify-center gap-2.5 rounded-2xl bg-[#229ED9] px-7 py-4 text-base font-bold text-white shadow-[0_12px_36px_-8px_rgba(34,158,217,0.8)] transition hover:-translate-y-0.5 hover:bg-[#1e90c7]"
+          >
+            <Icons name="telegram" class="h-5 w-5 transition-transform group-hover:scale-110" />
+            <span>Entrar al grupo de Telegram</span>
+            <Icons name="arrow" class="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </a>
+
+          <a
+            href={COMMUNITY.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2.5 rounded-2xl border border-white/15 bg-white/[0.04] px-6 py-4 text-base font-semibold text-slate-100 transition hover:border-[#CE1126]/50 hover:bg-white/[0.08]"
+          >
+            <Icons name="github" class="h-5 w-5 text-white" />
+            <span>Ver GitHub</span>
+          </a>
+        </div>
+
+        <!-- Micro Metrics Strip -->
+        <div class="mt-10 grid max-w-xl grid-cols-3 gap-4 border-t border-white/10 pt-6">
+          <div>
+            <div class="font-display text-2xl font-bold text-white sm:text-3xl">{COMMUNITY.telegramMembers}</div>
+            <div class="mt-0.5 text-xs text-slate-400">Miembros en Telegram</div>
+          </div>
+          <div>
+            <div class="font-display text-2xl font-bold text-white sm:text-3xl">13</div>
+            <div class="mt-0.5 text-xs text-slate-400">Repositorios públicos</div>
+          </div>
+          <div>
+            <div class="font-display text-2xl font-bold text-white sm:text-3xl">100%</div>
+            <div class="mt-0.5 text-xs text-slate-400">Abierto y sin costo</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Interactive Community Terminal Card -->
+      <div class="lg:col-span-5">
+        <div class="relative">
+          <!-- Branded glow behind terminal using exact logo Navy & Red -->
+          <div
+            aria-hidden="true"
+            class="absolute -inset-1 rounded-3xl bg-gradient-to-br from-[#002D62] via-[#229ED9]/40 to-[#CE1126]/70 opacity-65 blur-lg"
+          ></div>
+
+          <div class="relative overflow-hidden rounded-2xl border border-white/15 bg-[#070C18] shadow-2xl">
+            <!-- Window Top Bar -->
+            <div class="flex items-center justify-between border-b border-white/10 bg-[#0C1428] px-4 py-3">
+              <div class="flex items-center gap-2">
+                <span class="h-3 w-3 rounded-full bg-[#CE1126]"></span>
+                <span class="h-3 w-3 rounded-full bg-amber-400/90"></span>
+                <span class="h-3 w-3 rounded-full bg-emerald-400/90"></span>
+              </div>
+              <div class="font-mono text-xs text-slate-400">fossrd@comunidad:~</div>
+              <img src="/img/fossrd-logo.png" alt="" class="h-5 w-5 object-contain opacity-90" />
+            </div>
+
+            <!-- Interactive Terminal Tabs -->
+            <div class="flex border-b border-white/10 bg-[#091020] px-2 pt-2 font-mono text-xs" role="tablist" aria-label="Comandos de comunidad">
+              <button
+                type="button"
+                data-term-tab="whoami"
+                class="term-tab active rounded-t-lg border border-b-0 border-white/10 bg-[#070C18] px-3 py-2 text-[#38BDF8] transition"
+              >
+                whoami.sh
+              </button>
+              <button
+                type="button"
+                data-term-tab="repos"
+                class="term-tab rounded-t-lg border border-transparent px-3 py-2 text-slate-400 transition hover:text-slate-200"
+              >
+                repos.txt
+              </button>
+              <button
+                type="button"
+                data-term-tab="join"
+                class="term-tab rounded-t-lg border border-transparent px-3 py-2 text-slate-400 transition hover:text-slate-200"
+              >
+                join.sh
+              </button>
+            </div>
+
+            <!-- Terminal Content Panels -->
+            <div class="min-h-[268px] p-5 font-mono text-[13px] leading-relaxed">
+              <!-- Tab 1: whoami -->
+              <div data-term-panel="whoami" class="term-panel space-y-2.5">
+                <p class="text-slate-400">
+                  <span class="text-emerald-400">$</span> cat /etc/fossrd/about
+                </p>
+                <div class="rounded-xl border border-white/5 bg-white/[0.02] p-3.5 text-slate-200">
+                  <p><span class="text-[#38BDF8]">nombre:</span> FOSS-RD (Free Open Source Software RD)</p>
+                  <p><span class="text-[#38BDF8]">ubicacion:</span> República Dominicana 🇩🇴</p>
+                  <p><span class="text-[#38BDF8]">temas:</span> Open Source, Linux, Sistemas Operativos, Tech</p>
+                  <p><span class="text-[#38BDF8]">objetivo:</span> Crecer juntos compartiendo conocimiento</p>
+                </div>
+                <p class="text-slate-400 pt-1">
+                  <span class="text-emerald-400">$</span> echo $CANAL_PRINCIPAL
+                </p>
+                <p class="text-white font-semibold">
+                  → Telegram: <a href={COMMUNITY.telegramUrl} target="_blank" rel="noopener noreferrer" class="text-[#229ED9] underline decoration-[#229ED9]/40 underline-offset-4 hover:text-[#38BDF8]">https://t.me/foss_rd</a>
+                </p>
+              </div>
+
+              <!-- Tab 2: repos -->
+              <div data-term-panel="repos" class="term-panel hidden space-y-2">
+                <p class="text-slate-400">
+                  <span class="text-emerald-400">$</span> gh repo list FOSSRD --limit 6
+                </p>
+                <ul class="space-y-1.5 pt-1 text-slate-300">
+                  <li class="flex items-center justify-between">
+                    <span class="text-[#38BDF8]">FOSSRD/Bash</span>
+                    <span class="text-xs text-slate-500">Shell · .bashrc</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span class="text-[#38BDF8]">FOSSRD/Neovim</span>
+                    <span class="text-xs text-slate-500">Dev config</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span class="text-[#ff6b7d]">FOSSRD/gRPC-Example</span>
+                    <span class="text-xs text-slate-500">Go · Microservices</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span class="text-[#ff6b7d]">FOSSRD/Mini-Proyecto-3</span>
+                    <span class="text-xs text-slate-500">Go · TUI particiones</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span class="text-[#ff6b7d]">FOSSRD/Mini-Proyecto-2</span>
+                    <span class="text-xs text-slate-500">Go · Nmap wrapper</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span class="text-emerald-400">FOSSRD/Samba</span>
+                    <span class="text-xs text-slate-500">Linux file sharing</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Tab 3: join -->
+              <div data-term-panel="join" class="term-panel hidden space-y-3">
+                <p class="text-slate-400">
+                  <span class="text-emerald-400">$</span> fossrd join --telegram
+                </p>
+                <div class="rounded-xl border border-[#229ED9]/30 bg-[#229ED9]/10 p-3.5 text-slate-200">
+                  <p class="text-xs text-[#38BDF8] font-semibold uppercase tracking-wider mb-1">Paso único</p>
+                  <p>Entra al grupo, di hola, cuéntanos qué stack usas o qué estás aprendiendo y comparte tus dudas.</p>
+                </div>
+                <div class="flex items-center justify-between rounded-xl border border-white/10 bg-black/40 px-3 py-2">
+                  <code class="text-xs text-slate-200">{COMMUNITY.telegramUrl}</code>
+                  <button
+                    type="button"
+                    id="copy-telegram-btn"
+                    data-copy={COMMUNITY.telegramUrl}
+                    class="inline-flex items-center gap-1.5 rounded-lg bg-white/10 px-2.5 py-1 text-xs text-white transition hover:bg-white/20"
+                  >
+                    <Icons name="copy" class="h-3.5 w-3.5" />
+                    <span id="copy-telegram-label">Copiar</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('[data-term-tab]');
+  const panels = document.querySelectorAll<HTMLElement>('[data-term-panel]');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.termTab;
+      tabs.forEach((t) => {
+        const isActive = t.dataset.termTab === target;
+        t.classList.toggle('bg-[#070C18]', isActive);
+        t.classList.toggle('border-white/10', isActive);
+        t.classList.toggle('text-[#38BDF8]', isActive);
+        t.classList.toggle('border-transparent', !isActive);
+        t.classList.toggle('text-slate-400', !isActive);
+      });
+      panels.forEach((p) => {
+        p.classList.toggle('hidden', p.dataset.termPanel !== target);
+      });
+    });
+  });
+
+  const copyBtn = document.getElementById('copy-telegram-btn');
+  const copyLabel = document.getElementById('copy-telegram-label');
+  copyBtn?.addEventListener('click', async () => {
+    const url = copyBtn.getAttribute('data-copy');
+    if (!url || !copyLabel) return;
+    try {
+      await navigator.clipboard.writeText(url);
+      copyLabel.textContent = '¡Copiado!';
+      setTimeout(() => {
+        copyLabel.textContent = 'Copiar';
+      }, 1800);
+    } catch {
+      copyLabel.textContent = 't.me/foss_rd';
+    }
+  });
+</script>
